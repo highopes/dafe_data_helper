@@ -35,16 +35,16 @@ def Tenant_Data():
     This function prepare data for configuring Tenant
     """
     # # Please modify following as needed
+    # data_list is the row to be append to the Excel file
+    # for Tenant the list is: name, description, name_alias, security_domain, status
+    # set the initial value as needed
+    data_list = ["", "Config by DAFE data helper", "", "", ""]
     # Tenant Name Format is: Tenant{INDEX}{KEYWORD1}{KEYWORD2}
     INDX_INCLUDE = [*range(1, 23 + 1)]  # elements included, *range(1, 23+1) means 1-23
     INDX_EXCLUDE = [2, *range(4, 6 + 1), 9]  # elements excluded
+    INDEX = Substract_Lists(INDX_INCLUDE, INDX_EXCLUDE)
     KEYWORD1 = "_hangwe"
     KEYWORD2 = "_DAFE"
-    # Following is other parameters, modify as needed
-    DESCRIPTION = "Config by DAFE data helper"
-    NAME_ALIAS = ""
-    SEC_DOMAIN = ""
-    STATUS = ""
     # Following is the EXCEL sheet name
     SHEETNAME = "tenant"
 
@@ -52,11 +52,11 @@ def Tenant_Data():
     dataaccess = data_access.DataAccess()
     workbook = dataaccess.open_xls(EXCEL_FILE)
 
-    # manipulate the data and write to the Excel File
-    INDEX = Substract_Lists(INDX_INCLUDE, INDX_EXCLUDE)
+    # Precess the dynamic elements in data_list and write to the Excel file
     for indx in INDEX:
         name = "Tenant{}{}{}".format("%03d" % indx, KEYWORD1, KEYWORD2)
-        data_list = [name, DESCRIPTION, NAME_ALIAS, SEC_DOMAIN, STATUS]
+        data_list[0] = name
+
         dataaccess.write_row(workbook, SHEETNAME, data_list)
 
     # Save to Excel File
