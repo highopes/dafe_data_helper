@@ -5,6 +5,6 @@ The DAFE software is a tool used by Cisco CX Team for quick ACI deployment, but 
 
 The data_process tool is used to generate data for DAFE's Excel sheet in bulk, which is suitable for customers with large deployments, such as 200 EPGs during one deployment.
 
-The data_deploy tool is used to complete the actual ACI deployment with the Excel data. I use the Cobra SDK for network admin to easily understand. And I open it to the customer, so that the customer can process it again for their own network operation and maintenance.
+The data_deploy tool is used to complete the actual ACI deployment with the Excel data. I use the Cobra SDK to make it easier for network admin to understand. And I open it to the customer, so that the customer can process it again for their own network operation and maintenance.
 
 Currently I have developed the framework and several ACI configure functions. Subsequence config components will be added as the python functions in the future.
